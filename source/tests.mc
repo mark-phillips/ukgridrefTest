@@ -33,24 +33,34 @@ function IrishUnitTest(logger) {
     check_equal("O",9958,36141, new IrishGridRef(53.36427435,-6.34898583, 10),logger);
     //Howth 53 22’ 23”.1566 N    06 04’ 06”.0065 W
     check_equal("O",28546,37617, new IrishGridRef(53.37333339,-6.06932332, 10),logger);
+    // Origin
+    check_equal("V",14,95, new IrishGridRef(51.219437,-10.863303, 10),logger);
+    // Origin
+    check_equal("Unknown location",0,0, new IrishGridRef(51.11863357,-10.863303, 8),logger);
+    check_equal("Unknown location",0,0, new IrishGridRef(51.11863357,-10.86330332, 8),logger);
+    check_equal("Unknown location",0,0, new IrishGridRef(55.80478042, -4.81914048, 8),logger);
 
     return (true);
 }
 
 function check_equal(expected_text,expected_easting,expected_northing,gridref,logger)
 {
+    var easting_diff = 0;
+    var northing_diff = 0;
     var gr_string  = gridref.getGR_as_string();
     var message = "Calculated: " +  gr_string
                     + " (Eastings,Northings: " + gridref.easting + "," + gridref.northing + ")."
                     + " - Expected: (" + expected_text + " " + expected_easting+ " " + expected_northing + ")"
                     + " - Given Lat,Long: " + gridref.latitude + "," + gridref.longitude
                     + ")" ;
-    var easting_diff = expected_easting - gridref.easting.toNumber();
-    var northing_diff = expected_northing - gridref.northing.toNumber();
-    if ( easting_diff != 0 or northing_diff != 0 ) {
-        logger.warning(message);
-    } else {
-        logger.debug("OK: " + expected_text + " " + expected_easting+ " " + expected_northing);
+    if ( gridref.valid == true ) {
+        easting_diff = expected_easting - gridref.easting.toNumber();
+        northing_diff = expected_northing - gridref.northing.toNumber();
+        if ( easting_diff != 0 or northing_diff != 0 ) {
+            logger.warning(message);
+        } else {
+            logger.debug("OK: " + expected_text + " " + expected_easting+ " " + expected_northing);
+        }
     }
     Toybox.Test.assertMessage( gridref.text.equals(expected_text) and (easting_diff.abs()<=1) and (northing_diff.abs()<=1), message);
 
