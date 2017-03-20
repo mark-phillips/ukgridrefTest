@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>ukgridrefTest</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>connectiq.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.ui.externaltools.ExternalToolBuilder</name>
+			<triggers>full,incremental,</triggers>
+			<arguments>
+				<dictionary>
+					<key>LaunchConfigHandle</key>
+					<value>&lt;project&gt;/.externalToolBuilders/Builder buid.bat.launch</value>
+				</dictionary>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>connectiq.projectNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>source/GridRef.mc</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/ukgridref/source/GridRef.mc</locationURI>
+		</link>
+		<link>
+			<name>source/IrishGridRef.mc</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/ukgridref/source/IrishGridRef.mc</locationURI>
+		</link>
+		<link>
+			<name>source/OSGridRef.mc</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/ukgridref/source/OSGridRef.mc</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>
