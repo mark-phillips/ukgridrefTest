@@ -25,6 +25,10 @@ class OSGridRef extends GridRef
   // Create grid ref from WSG84 lat /long
     function initialize(lat, lon, p )
     {
+        //
+        // Initialise superclass
+        GridRef.initialize(lat, lon, p );
+        //
         // Check we have a valid UK lat & long
         if (lon == null or lat == null
             or lon.toNumber() < -10 or lon.toNumber() > 4
@@ -32,10 +36,6 @@ class OSGridRef extends GridRef
             valid = false;
             return;
         }
-        //
-        // Initialise superclass
-        GridRef.initialize(lat, lon, p );
-        //
         // Looks good so far so convert to OSGB36 Eastings & Northings
         valid = true;
         var numeric_grid_ref = OSBG36_latlon_to_numeric_gridref(  WSG84_to_OSGB36(lat,lon) );

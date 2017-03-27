@@ -25,7 +25,11 @@ class IrishGridRef extends GridRef
   // Create grid ref from WSG84 lat /long
     function initialize(lat, lon, p )
     {
-        // Check we have a valid UK lat & long
+        //
+        // Initialise superclass
+        GridRef.initialize(lat, lon, p );
+
+        // Check we have a valid lat & long
         if (lon == null or lat == null
             or lat.toFloat() < 51.2 or lat.toFloat() > 55.8
             or lon.toFloat() < -11.1 or lon.toFloat() > -4.8
@@ -33,9 +37,6 @@ class IrishGridRef extends GridRef
             valid = false;
             return;
         }
-        //
-        // Initialise superclass
-        GridRef.initialize(lat, lon, p );
         //
         // Looks good so far so convert to OSI65 Eastings & Northings
         valid = true;
